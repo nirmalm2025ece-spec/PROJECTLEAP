@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DonateHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h2>DonateHub</h2>
+  <nav>
+    <button data-page="home">Home</button>
+    <button data-page="drives">Drives</button>
+    <button data-page="donors">Donors</button>
+    <button data-page="recipients">Recipients</button>
+    <button data-page="items">Donations</button>
+    <button data-page="distributions">Distributions</button>
+    <button data-page="summary">Summary</button>
+  </nav>
+</header>
+
+<main>
+<div id="msg"></div>
+
+<section id="home" class="page">
+  <div class="welcome">
+    <h1>DonateHub</h1>
+    <p>Old Clothes and Book Donation Drive Tracker</p>
+    <p class="muted">Manage donation drives, donors, recipients and distributions.</p>
+  </div>
+  <div class="cards">
+    <div><b>Drives</b><strong id="cDrives">-</strong></div>
+    <div><b>Donors</b><strong id="cDonors">-</strong></div>
+    <div><b>Recipients</b><strong id="cRecipients">-</strong></div>
+    <div><b>Donations</b><strong id="cItems">-</strong></div>
+  </div>
+  <p class="status">Backend: <span id="status">Checking...</span></p>
+</section>
+
+<section id="drives" class="page">
+<h2>Donation Drives</h2>
+<form id="driveForm" class="form">
+<input name="driveName" placeholder="Drive name" required>
+<input name="description" placeholder="Description">
+<label>Start date<input type="date" name="startDate" required></label>
+<label>End date<input type="date" name="endDate" required></label>
+<button>Create Drive</button>
+</form>
+<div id="driveList"></div>
+</section>
+
+<section id="donors" class="page">
+<h2>Donors</h2>
+<form id="donorForm" class="form">
+<input name="name" placeholder="Name" required>
+<input name="phone" placeholder="Phone" required>
+<input name="email" type="email" placeholder="Email">
+<button>Add Donor</button>
+</form>
+<div id="donorList"></div>
+</section>
+
+<section id="recipients" class="page">
+<h2>Recipients</h2>
+<form id="recipientForm" class="form">
+<input name="organizationName" placeholder="Organization name" required>
+<input name="contactPerson" placeholder="Contact person">
+<input name="phone" placeholder="Phone" required>
+<input name="address" placeholder="Address">
+<button>Add Recipient</button>
+</form>
+<div id="recipientList"></div>
+</section>
+
+<section id="items" class="page">
+<h2>Donated Items</h2>
+<form id="itemForm" class="form">
+<label>Category<select name="category"><option>CLOTHES</option><option>BOOKS</option></select></label>
+<label>Condition<select name="condition"><option>NEW</option><option>GOOD</option><option>WORN</option></select></label>
+<input name="quantity" type="number" min="1" placeholder="Quantity" required>
+<label>Donated date<input type="date" name="donatedDate" required></label>
+<label>Drive<select name="driveId" id="driveSelect" required></select></label>
+<label>Donor<select name="donorId" id="donorSelect" required></select></label>
+<button>Add Donation</button>
+</form>
+<div id="itemList"></div>
+</section>
+
+<section id="distributions" class="page">
+<h2>Distributions</h2>
+<form id="distributionForm" class="form">
+<label>Item<select name="itemId" id="itemSelect" required></select></label>
+<label>Recipient<select name="recipientId" id="recipientSelect" required></select></label>
+<label>Distributed date<input type="date" name="distributedDate" required></label>
+<button>Distribute Item</button>
+</form>
+<div id="distributionList"></div>
+</section>
+
+<section id="summary" class="page">
+<h2>Drive Summary</h2>
+div class="summary">
+<label>Drive<select id="summaryDrive"></select></label>
+<button id="summaryBtn">View Summary</button>
+</div>
+<div id="summaryResult"></div>
+<h3>Undistributed Items</h3>
+<div id="undistributedList"></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
